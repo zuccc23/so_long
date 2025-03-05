@@ -1,27 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   map.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/03 17:43:48 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/05 18:34:23 by dahmane          ###   ########.fr       */
+/*   Created: 2025/03/05 12:37:26 by dahmane           #+#    #+#             */
+/*   Updated: 2025/03/05 18:49:46 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef MAP_H
+# define MAP_H
 
 # include <stdio.h>
 # include <unistd.h>
+# include <stdlib.h>
+# include <fcntl.h> 
+# include <string.h>
 # include "../libs/minilibx-linux/mlx.h"
-# include "map.h"
 
-// MAIN /////////////////////////////////////////////////////
+// MAP STRUCTURE //////////////////////////////////////////////////
+typedef struct s_map
+{
+	char	**grid;
+	int		height;
+	int		width;
+	int		player_count;
+	int		exit_count;
+	int		collectible_count;
+} t_map;
 
-// CLEANUP //////////////////////////////////////////////////
-void	clean_map(t_map **map, int fd);
-void	free_strs(char **strs);
+// PARSER /////////////////////////////////////////////////////////
+
+int		allocate_map(t_map **map);
 
 #endif

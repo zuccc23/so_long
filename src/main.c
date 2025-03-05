@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 17:27:43 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/05 11:16:23 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/03/05 18:16:03 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,5 @@
 
 int	main(void)
 {
-	printf("hello world");
-	// mlx_init;
+	// printf("hello world");
 }
