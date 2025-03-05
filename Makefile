@@ -2,7 +2,11 @@ CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
 
+#MINILIBX_DIR = minilibix-linux
+
 OBJ_DIR = obj
+
+#MINILIBIX_OBJ = 
 
 SRC = src/main.c 
 
