@@ -2,7 +2,7 @@ CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
 
-MINILIBX_DIR = minilibx-linux
+MINILIBX_DIR = libs/minilibx-linux
 
 OBJ_DIR = obj
 
@@ -15,9 +15,9 @@ OBJ = $(patsubst src/%.c, $(OBJ_DIR)/%.o, $(SRC))
 NAME = so_long
 
 $(NAME): $(OBJ) $(MINILIBIX_OBJ)
-	${CC} ${CFLAGS} $(OBJ) $(MINILIBIX_OBJ) -o $(NAME)
+	${CC} ${CFLAGS} $(OBJ) $(MINILIBIX_OBJ) -L/$(MINILIBX_DIR)/lmlx -lXext -lX11 -o $(NAME)
 
-minilibx-linux/libmlx.a:
+libs/minilibx-linux/libmlx.a:
 	$(MAKE) -C $(MINILIBX_DIR)
 
 $(OBJ_DIR):
