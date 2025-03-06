@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dahmane <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/03 17:27:43 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/06 13:04:51 by dahmane          ###   ########.fr       */
+/*   Created: 2024/11/08 14:48:56 by dahmane           #+#    #+#             */
+/*   Updated: 2024/11/18 10:51:51 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include <unistd.h>
 
-int	main(int argc, char **argv)
+void	ft_putstr_fd(char *s, int fd)
 {
-	t_map	*map = NULL;
-	char	*mapfile;
-	int fd = -1;
-	
-	if (argc != 2)
-		return (0);
-	// printf("hello world\n");
-	allocate_map(&map, argv[1], fd);
-	// printf("%d\n", map->height);
+	int	n;
+
+	n = 0;
+	while (s[n] && fd >= 0)
+	{
+		write(fd, &s[n], 1);
+		n ++;
+	}
 }

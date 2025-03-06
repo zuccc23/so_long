@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dahmane <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/03 17:27:43 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/06 13:04:51 by dahmane          ###   ########.fr       */
+/*   Created: 2024/11/11 19:12:27 by dahmane           #+#    #+#             */
+/*   Updated: 2024/11/12 18:36:20 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+/*void	del(void *content)
 {
-	t_map	*map = NULL;
-	char	*mapfile;
-	int fd = -1;
-	
-	if (argc != 2)
-		return (0);
-	// printf("hello world\n");
-	allocate_map(&map, argv[1], fd);
-	// printf("%d\n", map->height);
+	free(lst->content);
+}*/
+
+void	ft_lstdelone(t_list *lst, void (*del)(void*))
+{
+	del(lst->content);
+	free(lst);
 }

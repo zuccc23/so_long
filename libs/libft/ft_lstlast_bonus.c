@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstlast_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dahmane <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/03 17:27:43 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/06 13:04:51 by dahmane          ###   ########.fr       */
+/*   Created: 2024/11/11 19:03:04 by dahmane           #+#    #+#             */
+/*   Updated: 2024/11/18 10:56:23 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+t_list	*ft_lstlast(t_list *lst)
 {
-	t_map	*map = NULL;
-	char	*mapfile;
-	int fd = -1;
-	
-	if (argc != 2)
-		return (0);
-	// printf("hello world\n");
-	allocate_map(&map, argv[1], fd);
-	// printf("%d\n", map->height);
+	t_list	*tmp;
+
+	if (!lst)
+		return (NULL);
+	tmp = lst;
+	while (tmp->next != NULL)
+		tmp = tmp->next;
+	return (tmp);
 }

@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dahmane <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/03 17:27:43 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/06 13:04:51 by dahmane          ###   ########.fr       */
+/*   Created: 2024/11/12 14:38:05 by dahmane           #+#    #+#             */
+/*   Updated: 2024/11/12 18:37:40 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	t_map	*map = NULL;
-	char	*mapfile;
-	int fd = -1;
-	
-	if (argc != 2)
-		return (0);
-	// printf("hello world\n");
-	allocate_map(&map, argv[1], fd);
-	// printf("%d\n", map->height);
+	while (lst != NULL)
+	{
+		f(lst->content);
+		lst = lst->next;
+	}
 }
+
+/*int	main(void)
+{
+	printf("hello");
+}*/

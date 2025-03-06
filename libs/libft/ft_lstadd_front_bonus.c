@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dahmane <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/03 17:27:43 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/06 13:04:51 by dahmane          ###   ########.fr       */
+/*   Created: 2024/11/11 18:31:06 by dahmane           #+#    #+#             */
+/*   Updated: 2024/11/12 18:26:26 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	t_map	*map = NULL;
-	char	*mapfile;
-	int fd = -1;
-	
-	if (argc != 2)
-		return (0);
-	// printf("hello world\n");
-	allocate_map(&map, argv[1], fd);
-	// printf("%d\n", map->height);
+	new->next = *lst;
+	*lst = new;
 }
+
+/*int	main(void)
+{
+	t_list	*lst;
+
+	t_list	*new;
+	new->content = "hh";
+	ft_lstadd_front(&lst, new);
+}*/

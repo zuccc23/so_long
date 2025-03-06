@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 17:43:48 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/05 18:34:23 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/03/06 08:52:58 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 // MAIN /////////////////////////////////////////////////////
 
 // CLEANUP //////////////////////////////////////////////////
-void	clean_map(t_map **map, int fd);
-void	free_strs(char **strs);
+// void	clean_map(t_map **map, int fd);
+// void	free_strs(char **strs);
 
 #endif

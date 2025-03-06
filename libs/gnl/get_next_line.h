@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 16:25:15 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/06 08:42:45 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/03/06 12:54:36 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 
 int		ft_strlen_after_line(char *str);
 int		ft_strlen_before_line(char *str);
-char	*ft_strdup(char *src);
+char	*ft_strdup2(char *src);
 char	*ft_strjoin(char const *s1, char const *s2);
 int		check(char *str, char c);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
