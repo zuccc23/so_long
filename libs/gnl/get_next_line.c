@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 16:35:13 by dahmane           #+#    #+#             */
-/*   Updated: 2024/12/11 17:35:43 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/03/13 22:58:27 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*read_line(char *temp, int fd)
 	if (!buffer)
 		return (NULL);
 	if (!temp)
-		temp = ft_strdup("");
+		temp = ft_strdup2("");
 	nb_read = 1;
 	while (nb_read > 0 && check(temp, '\n') != 1)
 	{
@@ -56,7 +56,7 @@ char	*divide_line(char **temp)
 	res = ft_substr(*temp, 0, n);
 	if (!res)
 		return (free(*temp), *temp = NULL, NULL);
-	cache = ft_strdup(*temp + n);
+	cache = ft_strdup2(*temp + n);
 	if (!cache)
 		return (free(res), free(*temp), *temp = NULL, NULL);
 	free(*temp);

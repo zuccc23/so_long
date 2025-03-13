@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 17:27:43 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/12 13:36:26 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/03/13 23:00:01 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@ int	main(int argc, char **argv)
 		return (0);
 	// printf("hello world\n");
 	allocate_map(&map, argv[1], fd);
+	printf("test");
 	// printf("%d\n", map->height);
 }

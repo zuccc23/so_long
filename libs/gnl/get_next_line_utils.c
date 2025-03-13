@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 16:25:46 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/06 12:54:23 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/03/13 22:58:27 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (!s)
 		return (NULL);
 	if (start > ft_strlen(s))
-		return (ft_strdup(""));
+		return (ft_strdup2(""));
 	i = 0;
 	if (len > ft_strlen(s) - start)
 		len = ft_strlen(s) - start;
