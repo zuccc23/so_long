@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 12:41:23 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/14 21:59:31 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/03/17 16:18:18 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ typedef struct s_data
 void	init_mlx(void);
 
 //  /////////////////////////////////////////////////////////
-
+# define IMG_LENGTH 960
+# define IMG_HEIGHT 960
 
 
 #endif
