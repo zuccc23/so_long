@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 17:43:48 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/18 09:10:12 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/03/19 11:50:42 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@
 # include <string.h>
 
 // MY LIBS ////////////////////////////////////////////////
-# include "map.h"
-# include "graphics.h"
 # include "../libs/gnl/get_next_line.h"
 # include "../libs/minilibx-linux/mlx.h"
 # include "../libs/libft/libft.h"

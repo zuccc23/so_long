@@ -6,11 +6,13 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 17:27:43 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/18 15:53:04 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/03/19 16:16:55 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+#include "../includes/map.h"
+#include "../includes/graphics.h"
 
 int	main(int argc, char **argv)
 {	
@@ -53,37 +55,30 @@ int	main(int argc, char **argv)
 	img.img = mlx_new_image(mlx, WIN_WIDTH, WIN_HEIGHT);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
 	// ft_printf("bits/pixel: %d line length: %d endian: %d\n", img.bits_per_pixel, img.line_length, img.endian);
-	while (i < WIN_HEIGHT)
-	{
-		j = 0;
-		while (j < WIN_WIDTH)
-		{
-			put_pixel(&img, j, i, 0x00FF0000);
-			j++;
-		}
-		i++;
-	}
-	
-	// DRAW STUFF //
-	// int height;
-	// int	width;
-
-	// i = 0;
-	// height = (map->height / 1000);
-	// width = (map->width / 900);
-	
-	// while (i < height)
+	// while (i < WIN_HEIGHT)
 	// {
 	// 	j = 0;
-	// 	while (j < width)
+	// 	while (j < WIN_WIDTH)
 	// 	{
-	// 		put_pixel(&img, j, i, 0x00FF00FF);
+	// 		put_pixel(&img, j, i, 0x00c5f4ce);
 	// 		j++;
 	// 	}
 	// 	i++;
 	// }
-	draw_rectangle(img, *map);
-	mlx_put_image_to_window(mlx, window, img.img, 0, 0);
+	
+	// DRAW STUFF //
+	// render_map(img, *map);
+
+	// ADD IMAGES
+	void	*bingus = NULL;
+	int	width;
+	int	height;
+	
+	// bingus = init_img(mlx, "../assets/sprites/bingus.xpm", width, height);
+	bingus = mlx_xpm_file_to_image(mlx, "bingus.xpm", &width, &height);
+	if (!bingus)
+		return (ft_printf("fail"));
+	mlx_put_image_to_window(mlx, window, bingus, 0, 0);
 	mlx_loop(mlx);
 	
 }

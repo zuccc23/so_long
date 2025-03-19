@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 12:37:26 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/14 12:47:57 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/03/19 11:40:44 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ typedef struct s_map
 } t_map;
 
 // PARSER /////////////////////////////////////////////////////////
-
 int		allocate_map(t_map **map, char *mapfile, int fd);
 int		count_height(t_map **map, char *mapfile, int *fd);
 int		fill_map(t_map **map, char *mapfile, int *fd);

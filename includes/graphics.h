@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 12:41:23 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/18 15:52:45 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/03/19 15:48:44 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define GRAPHICS_H
 
 # include "so_long.h"
+#include "map.h"
 
 // IMAGE STRUCTURE ///////////////////////////////////////
 typedef struct s_data
@@ -32,9 +33,14 @@ void	close_window(void *mlx, void *window);
 
 // RENDER /////////////////////////////////////////////////
 void	put_pixel(t_data *data, int x, int y, int color);
-void	draw_rectangle(t_data img, t_map map);
+void	draw_rectangle(t_data img, t_map map, int x, int y, int color);
+void	render_map(t_data img, t_map map);
+void	calc_square_size(t_map map, int *height, int *width);
 
-//  /////////////////////////////////////////////////////////
+// TEXTURES /////////////////////////////////////////////////
+void	*init_img(void *mlx, char *relative_path, int width, int height);
+
+// WINDOW SIZE /////////////////////////////////////////////////
 # define WIN_WIDTH 900
 # define WIN_HEIGHT 900
 

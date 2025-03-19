@@ -7,7 +7,7 @@ MLX_FLAGS = -L/$(MINILIBX_DIR)/lmlx -lXext -lX11
 #SOURCE FILES
 MAIN_SRC = src/main.c src/cleanup.c
 MAP_SRC = src/map/parser.c
-GRAPH_SRC = src/graphics/window.c src/graphics/render.c
+GRAPH_SRC = src/graphics/window.c src/graphics/render.c src/graphics/textures.c
 
 #DIRECTORIES
 OBJ_DIR = obj
