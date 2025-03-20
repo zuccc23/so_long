@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 12:36:36 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/19 15:33:59 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/03/20 14:57:46 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,3 +92,4 @@ void	calc_square_size(t_map map, int *height, int *width)
 	*height = (WIN_HEIGHT / map.height);
 	*width = (WIN_WIDTH / map.width);
 }
+// void	render_map()

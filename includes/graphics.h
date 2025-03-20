@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 12:41:23 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/19 15:48:44 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/03/20 12:48:43 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct s_data
 }	t_data;
 
 // WINDOW //////////////////////////////////////////////////
-void	init_mlx(void **mlx, void **window, int height, int width);
+int	init_mlx(void **mlx, void **window, int height, int width);
 void	*create_window(void *mlx, void *window, int width, int height);
 void	close_window(void *mlx, void *window);
 
@@ -43,6 +43,11 @@ void	*init_img(void *mlx, char *relative_path, int width, int height);
 // WINDOW SIZE /////////////////////////////////////////////////
 # define WIN_WIDTH 900
 # define WIN_HEIGHT 900
+# define SPRITE_SIZE 60
 
+// ERRORS /////////////////////////////////////////////////////
+# define ER_OK 0
+# define ER_MLX_INIT -1
+# define ERR_MLX_NWIN -2
 
 #endif

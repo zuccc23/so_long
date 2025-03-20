@@ -6,11 +6,13 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:08:49 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/06 09:20:33 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/03/20 13:02:13 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+#include "../includes/map.h"
+#include "../includes/graphics.h"
 
 void	clean_map(t_map **map, int fd)
 {

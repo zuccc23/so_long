@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 17:27:43 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/19 16:16:55 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/03/20 15:12:51 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,18 +42,19 @@ int	main(int argc, char **argv)
 	strs_print(map->grid);
 	ft_printf("\n");
 
-	// WINDOW //
-	void	*mlx;
-	void	*window;
-	init_mlx(&mlx, &window, 5, 5);
-
-	// IMAGE //
-	t_data	img;
-	int	i = 0;
-	int	j = 0;
+	// // WINDOW //
+	void	*mlx = NULL;
+	void	*window = NULL;
+	if (init_mlx(&mlx, &window, map->height, map->width) != ER_OK)
+		return (ft_printf("error"));
 	
-	img.img = mlx_new_image(mlx, WIN_WIDTH, WIN_HEIGHT);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
+	// // BASIC COLOR IMAGE //
+	// t_data	img;
+	// int	i = 0;
+	// int	j = 0;
+	
+	// img.img = mlx_new_image(mlx, WIN_WIDTH, WIN_HEIGHT);
+	// img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
 	// ft_printf("bits/pixel: %d line length: %d endian: %d\n", img.bits_per_pixel, img.line_length, img.endian);
 	// while (i < WIN_HEIGHT)
 	// {
@@ -71,14 +72,23 @@ int	main(int argc, char **argv)
 
 	// ADD IMAGES
 	void	*bingus = NULL;
+	void	*floppa = NULL;
 	int	width;
 	int	height;
 	
-	// bingus = init_img(mlx, "../assets/sprites/bingus.xpm", width, height);
-	bingus = mlx_xpm_file_to_image(mlx, "bingus.xpm", &width, &height);
+	bingus = init_img(mlx, "assets/sprites/bingus5.xpm", width, height);
 	if (!bingus)
 		return (ft_printf("fail"));
-	mlx_put_image_to_window(mlx, window, bingus, 0, 0);
-	mlx_loop(mlx);
 	
+	floppa = init_img(mlx, "assets/sprites/floppa1.xpm", width, height);
+	if (!floppa)
+		return (ft_printf("fail"));
+	
+	// SHOW WINDOW
+	// "  	c #F5F4F4",
+	mlx_put_image_to_window(mlx, window, bingus, 0, 0);
+	// mlx_put_image_to_window(mlx, window, bingus, 60, 0);
+	mlx_put_image_to_window(mlx, window, floppa, 0, 0);
+	// mlx_put_image_to_window(mlx, window, floppa, 0, 120);
+	mlx_loop(mlx);
 }
