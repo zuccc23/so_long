@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 17:27:43 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/22 17:42:47 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/03/22 18:24:03 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,8 +108,7 @@ int	main(int argc, char **argv)
 	data.window = window;
 	data.mlx = mlx;
 	
-	mlx_hook(data.window, DESTROY_NOTIFY, 0, close_window, &data);
-	mlx_key_hook(data.window, key_handler, &data);
+	event_handler(&data);
 	
 	// LOOP
 	mlx_loop(mlx);

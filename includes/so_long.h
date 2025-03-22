@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 17:43:48 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/22 17:42:12 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/03/22 18:23:30 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ typedef struct s_data
 # include "../libs/printf/ft_printf.h"
 
 // MOVEMENT ////////////////////////////////////////////////
-int	key_handler(int keycode, t_data *vars);
+int		key_handler(int keycode, t_data *vars);
+void	event_handler(t_data *data);
 
 // CLEANUP //////////////////////////////////////////////////
 // void	clean_map(t_map **map, int fd);
