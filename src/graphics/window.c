@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 12:48:46 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/20 13:06:41 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/03/22 16:04:41 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,17 @@ void	*create_window(void *mlx, void *window, int width, int height)
 {
 	ft_printf("--CREATE WINDOW--\n");
 
-	window = mlx_new_window(mlx, width, height, "Title!");
+	window = mlx_new_window(mlx, width, height, "So Long!");
 	if (!window)
 		return (NULL);
 	return (window);
 }
 
-void	close_window(void *mlx, void *window)
+int	close_window(t_data *data)
 {
 	//cleanup needed before closing window 
-	mlx_destroy_window(mlx, window);
+	mlx_destroy_window(data->mlx, data->window);
 	//maybe err code if fail
+	exit(0);
+	return (0);
 }

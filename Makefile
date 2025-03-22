@@ -8,6 +8,7 @@ MLX_FLAGS = -L/$(MINILIBX_DIR)/lmlx -lXext -lX11
 MAIN_SRC = src/main.c src/cleanup.c
 MAP_SRC = src/map/parser.c
 GRAPH_SRC = src/graphics/window.c src/graphics/render.c src/graphics/textures.c
+GAME_SRC = src/game/movement.c
 
 #DIRECTORIES
 OBJ_DIR = obj
@@ -21,6 +22,7 @@ PRINTF_DIR = libs/printf
 OBJ = $(patsubst src/%.c, $(OBJ_DIR)/%.o, $(MAIN_SRC))
 OBJ += $(patsubst src/map/%.c, $(OBJ_DIR)/map/%.o, $(MAP_SRC))
 OBJ += $(patsubst src/graphics/%.c, $(OBJ_DIR)/graphics/%.o, $(GRAPH_SRC))
+OBJ += $(patsubst src/game/%.c, $(OBJ_DIR)/game/%.o, $(GAME_SRC))
 
 MINILIBIX_OBJ = $(MINILIBX_DIR)/libmlx.a
 GNL_OBJ = $(GNL_DIR)/get_next_line.a
@@ -34,7 +36,7 @@ NAME = so_long
 all: $(NAME)
 
 #LINKING EXECUTABLE !!!FLAGS
-$(NAME): $(OBJ_DIR) $(OBJ_DIR)/map $(OBJ_DIR)/graphics $(OBJ) $(MINILIBIX_OBJ) $(GNL_OBJ) $(LIBFT_OBJ) $(PRINTF_OBJ)
+$(NAME): $(OBJ_DIR) $(OBJ_DIR)/map $(OBJ_DIR)/game $(OBJ_DIR)/graphics $(OBJ) $(MINILIBIX_OBJ) $(GNL_OBJ) $(LIBFT_OBJ) $(PRINTF_OBJ)
 	${CC}  $(OBJ) $(GNL_OBJ) $(LIBFT_OBJ) $(PRINTF_OBJ) $(MINILIBIX_OBJ) $(MLX_FLAGS) -o $(NAME)
 
 #BUILD LIBRARIES
@@ -57,6 +59,9 @@ $(OBJ_DIR)/map:
 $(OBJ_DIR)/graphics:
 	mkdir -p $@
 
+$(OBJ_DIR)/game:
+	mkdir -p $@
+
 #COMPILING .c FILES INTO .o FILES (INSIDE OBJ DIR) !!!FLAGS
 $(OBJ_DIR)/%.o: src/%.c | $(OBJ_DIR)
 	${CC}  -c $< -o $@
@@ -65,6 +70,9 @@ $(OBJ_DIR)/map/%.o: src/map/%.c | $(OBJ_DIR)/map
 	${CC}  -c $< -o $@
 
 $(OBJ_DIR)/graphics/%.o: src/graphics/%.c | $(OBJ_DIR)/graphics
+	${CC}  -c $< -o $@
+
+$(OBJ_DIR)/game/%.o: src/game/%.c | $(OBJ_DIR)/game
 	${CC}  -c $< -o $@
 
 #BASIC RULES

@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 17:27:43 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/20 15:12:51 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/03/22 17:42:47 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,27 +68,56 @@ int	main(int argc, char **argv)
 	// }
 	
 	// DRAW STUFF //
-	// render_map(img, *map);
+	// render_map_test(img, *map);
 
 	// ADD IMAGES
-	void	*bingus = NULL;
-	void	*floppa = NULL;
-	int	width;
-	int	height;
+	// void	*bingus = NULL;
+	// void	*floppa = NULL;
+	// int	width;
+	// int	height;
 	
-	bingus = init_img(mlx, "assets/sprites/bingus5.xpm", width, height);
-	if (!bingus)
-		return (ft_printf("fail"));
+	// bingus = init_img(mlx, "assets/sprites/bingus5.xpm", width, height);
+	// if (!bingus)
+	// 	return (ft_printf("fail"));
 	
-	floppa = init_img(mlx, "assets/sprites/floppa1.xpm", width, height);
-	if (!floppa)
-		return (ft_printf("fail"));
+	// floppa = init_img(mlx, "assets/sprites/floppa2.xpm", width, height);
+	// if (!floppa)
+	// 	return (ft_printf("fail"));
 	
-	// SHOW WINDOW
-	// "  	c #F5F4F4",
-	mlx_put_image_to_window(mlx, window, bingus, 0, 0);
+		// SHOW WINDOW
+	// mlx_put_image_to_window(mlx, window, bingus, 0, 0);
 	// mlx_put_image_to_window(mlx, window, bingus, 60, 0);
-	mlx_put_image_to_window(mlx, window, floppa, 0, 0);
+	// mlx_put_image_to_window(mlx, window, floppa, 0, 0);
 	// mlx_put_image_to_window(mlx, window, floppa, 0, 120);
+
+	// RENDER MAP
+	t_img img;
+	
+	// img.player = create_img(mlx, "assets/sprites/bingus1.xpm", width, height);
+	// img.wall = create_img(mlx, "assets/sprites/flame2.xpm", width, height);
+	// img.collect = create_img(mlx, "assets/sprites/floppa3.xpm", width, height);
+	// img.exit = create_img(mlx, "assets/sprites/froggy_chair2.xpm", width, height);
+	// img.tile = create_img(mlx, "assets/sprites/block1.xpm", width, height);
+	
+	if (init_sprites(mlx, &img) != ER_OK)
+		return (ft_printf("error"));
+	render_map(img, mlx, window, *map);
+
+	// EVENTS
+	t_data data;
+	data.window = window;
+	data.mlx = mlx;
+	
+	mlx_hook(data.window, DESTROY_NOTIFY, 0, close_window, &data);
+	mlx_key_hook(data.window, key_handler, &data);
+	
+	// LOOP
 	mlx_loop(mlx);
 }
+
+/*STUFF TO FREE :
+-map
+-t_img img
+-window (close)
+-mlx?
+*/
