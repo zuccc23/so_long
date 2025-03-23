@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 12:32:01 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/14 12:30:10 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/03/23 17:21:38 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,25 @@
 
 int	init_map(t_map **map, char *mapfile, int fd)
 {
-	// int	fd;
-
-	// fd = -1;
-	// allocate_map(&(*map));
-		//count height
-	//fill_map
-	//check_map
-	return (0);
-}
-
-int	allocate_map(t_map **map, char *mapfile, int fd)
-{
+	fd = -1;
+	
 	*map = malloc(sizeof(map));
 	if (!*map)
 		return (1);
-	if (count_height(&(*map), mapfile, &fd) == 1)
+	
+	if (count_height(&(*map), mapfile, &fd) != 0)
 		return (1);
-	(*map)->grid = malloc(((*map)->height + 1) * sizeof(char **));
+	
+	(*map)->grid = malloc(((*map)->height + 1) * sizeof(char *));
 	if (!(*map)->grid)
 		return (1);
-	fill_map(&(*map), mapfile, &fd);
+		
+	if (fill_map(&(*map), mapfile, &fd) != 0)
+		return (1);
+	
+	if (count_width((*map)->grid, &(*map)) != 0)
+		return (1);
+		
 	return (0);
 }
 
@@ -42,39 +40,86 @@ int	count_height(t_map **map, char *mapfile, int *fd)
 {
 	int		count;
 	char	buffer[10];
+	char		*test;
 
 	count = 0;
 	*fd = open(mapfile, O_RDONLY);
 	if (*fd == -1)
 		return (1);
-	while (get_next_line(*fd) != NULL)
+	test = get_next_line(*fd);
+	while (test != NULL)
 	{
 		count++;
+		test = get_next_line(*fd);
 	}
-	(*map)->height = count;
+	free(test);
 	close(*fd);
+	*fd = -1;
+	if (count < 3)
+		return (1);
+	(*map)->height = count;
+	return (0);
+}
+
+int	count_width(char **strs, t_map **map)
+{
+	int	i;
+	int	count;
+	int	count_temp;
+
+	i = 1;
+	count_temp = 0;
+	count = ft_strlen(strs[0]);
+	if (count < 5)
+		return (1);
+	while (strs[i])
+	{
+		count_temp = ft_strlen(strs[i]);
+		if (count != count_temp)
+			return (1);
+		i++;
+	}
+	(*map)->width = count;
 	return (0);
 }
 
 int	fill_map(t_map **map, char *mapfile, int *fd)
 {
 	int	i;
-	int	j;
 
 	i = 0;
-	j = 0;
+	*fd = open(mapfile, O_RDONLY);
+	if (*fd == -1)
+		return (1);
 	while (i < (*map)->height)
 	{
-		(*map)->grid[j] = ft_strdup("get_next_line(*fd)");
-		// printf("%s\n", get_next_line(*fd));
-		j++;
+		(*map)->grid[i] = get_next_line(*fd);
+		if (!(*map)->grid[i])
+			return (1);
+		remove_nline((*map)->grid[i]);
 		i++;
 	}
-	strs_print((*map)->grid);
+	close(*fd);
+	*fd = -1;
 	return (0);
 }
 
-void	strs_print(char **strs)
+void	remove_nline(char *str)
+{
+	int	i;
+
+	if (!str)
+		return ;
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '\n')
+			str[i] = '\0';
+		i++;
+	}
+}
+
+void	strs_print(char **strs) //delete later
 {
 	int	i;
 	int	j;
@@ -95,3 +140,4 @@ void	strs_print(char **strs)
 	// if (strs[i] == NULL)
 	// 	write (1, "null", 4);
 }
+

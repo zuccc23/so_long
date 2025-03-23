@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 16:35:13 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/13 22:58:27 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/03/23 17:10:51 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,19 @@ char	*divide_line(char **temp)
 	n = 0;
 	while ((*temp)[n] != '\n' && (*temp)[n] != '\0')
 		n++;
+	/////////////////////////////////////////////////////
+	
 	if ((*temp)[n] == '\n')
-		n++;
-	res = ft_substr(*temp, 0, n);
+		res = ft_substr(*temp, 0, n+1);
+	else
+		res = ft_substr(*temp, 0, n);
 	if (!res)
 		return (free(*temp), *temp = NULL, NULL);
-	cache = ft_strdup2(*temp + n);
+	if ((*temp)[n] == '\n')
+		cache = ft_strdup2(*temp + (n + 1));
+	else
+		cache = ft_strdup2("");
+	////////////////////////////////////////////////////////
 	if (!cache)
 		return (free(res), free(*temp), *temp = NULL, NULL);
 	free(*temp);
@@ -110,4 +117,32 @@ char	*get_next_line(int fd)
 // 	// printf("%s\n", ft_strchr(s, 'w'));
 // 	// printf("%s\n", get_before_nline(s));
 // 	// printf("%s\n", get_after_nline(s));
+// }
+
+// char	*divide_line(char **temp)
+// {
+// 	char	*res;
+// 	char	*cache;
+// 	int		n;
+
+// 	if (!*temp || !**temp)
+// 		return (NULL);
+// 	n = 0;
+// 	while ((*temp)[n] != '\n' && (*temp)[n] != '\0')
+// 		n++;
+// 	/////////////////////////////////////////////////////
+	
+// 	if ((*temp)[n] == '\n')
+// 		n++;
+// 	res = ft_substr(*temp, 0, n);
+// 	if (!res)
+// 		return (free(*temp), *temp = NULL, NULL);
+// 	cache = ft_strdup2(*temp + n);
+// 	if (!cache)
+// 		return (free(res), free(*temp), *temp = NULL, NULL);
+	
+// 	////////////////////////////////////////////////////////
+// 	free(*temp);
+// 	*temp = cache;
+// 	return (res);
 // }

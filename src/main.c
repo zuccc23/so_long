@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 17:27:43 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/22 18:24:03 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/03/23 17:21:56 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,35 +17,50 @@
 int	main(int argc, char **argv)
 {	
 	// PARSING //////////////////////////////////////////////
-	// t_map	*map = NULL;
-	// char	*mapfile;
-	// int fd = -1;
+	t_map	*map_tst;
+	char	*mapfile;
+	int fd = -1;
 	
+	ft_printf("--REAL MAP--\n");
 	// if (argc != 2)
 	// 	return (0);
-	// // printf("hello world\n");
-	// allocate_map(&map, argv[1], fd);
-	// printf("test");
-	// // printf("%d\n", map->height);
+
+	// 11111
+	// 1P001
+	// 1C001
+	// 10CE1
+	// 11111
+
+	if (init_map(&map_tst, argv[1], fd) != 0)
+		return (1);
+
+	printf("height: %d\n", map_tst->height);
+	printf("width: %d\n", map_tst->width);
+	strs_print(map_tst->grid);
+	
+	// CLEANUP //
+	clean_map(&map_tst, fd);
+	return (1);
 	
 	// GRAPHIC SETUP //////////////////////////////////////////
-	// MAP //
-	t_map	*map = NULL;
-	char *map_temp[] = {"11111", "1P001", "1C001", "10CE1", "11111", NULL};
-	map = malloc(sizeof(t_map));
-	map->grid = map_temp;
-	map->height = 5;
-	map->width = 5;
 	
-	ft_printf("--MAP--");
-	ft_printf("\n");
-	strs_print(map->grid);
-	ft_printf("\n");
+	// MAP //
+	// t_map	*map = NULL;
+	// char *map_temp[] = {"11111", "1P001", "1C001", "10CE1", "11111", NULL};
+	// map = malloc(sizeof(t_map));
+	// map->grid = map_temp;
+	// map->height = 5;
+	// map->width = 5;
+	
+	// ft_printf("--UNALLOCATED MAP--");
+	// ft_printf("\n");
+	// strs_print(map->grid);
+	// ft_printf("\n");
 
-	// // WINDOW //
+	// // WINDOW /////////////////////////////////////////////////
 	void	*mlx = NULL;
 	void	*window = NULL;
-	if (init_mlx(&mlx, &window, map->height, map->width) != ER_OK)
+	if (init_mlx(&mlx, &window, map_tst->height, map_tst->width) != ER_OK)
 		return (ft_printf("error"));
 	
 	// // BASIC COLOR IMAGE //
@@ -90,7 +105,7 @@ int	main(int argc, char **argv)
 	// mlx_put_image_to_window(mlx, window, floppa, 0, 0);
 	// mlx_put_image_to_window(mlx, window, floppa, 0, 120);
 
-	// RENDER MAP
+	// RENDER MAP /////////////////////////////////////////////
 	t_img img;
 	
 	// img.player = create_img(mlx, "assets/sprites/bingus1.xpm", width, height);
@@ -101,16 +116,16 @@ int	main(int argc, char **argv)
 	
 	if (init_sprites(mlx, &img) != ER_OK)
 		return (ft_printf("error"));
-	render_map(img, mlx, window, *map);
+	render_map(img, mlx, window, *map_tst);
 
-	// EVENTS
+	// // EVENTS
 	t_data data;
 	data.window = window;
 	data.mlx = mlx;
 	
 	event_handler(&data);
 	
-	// LOOP
+	// // LOOP
 	mlx_loop(mlx);
 }
 

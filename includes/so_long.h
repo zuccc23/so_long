@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 17:43:48 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/22 18:23:30 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/03/23 17:22:04 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,15 @@ typedef struct s_data
 # include "../libs/minilibx-linux/mlx.h"
 # include "../libs/libft/libft.h"
 # include "../libs/printf/ft_printf.h"
+# include "map.h"
 
 // MOVEMENT ////////////////////////////////////////////////
 int		key_handler(int keycode, t_data *vars);
 void	event_handler(t_data *data);
 
 // CLEANUP //////////////////////////////////////////////////
-// void	clean_map(t_map **map, int fd);
-// void	free_strs(char **strs);
+void	clean_map(t_map **map, int fd);
+void	free_strs(char **strs);
 
 // EVENTS CODE /////////////////////////////////////////////
 # define DESTROY_NOTIFY 17
