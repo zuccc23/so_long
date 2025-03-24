@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 17:27:43 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/23 17:21:56 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/03/24 15:52:48 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ int	main(int argc, char **argv)
 	if (init_map(&map_tst, argv[1], fd) != 0)
 		return (1);
 
-	printf("height: %d\n", map_tst->height);
-	printf("width: %d\n", map_tst->width);
+	// ft_printf("height: %d\n", map_tst->height);
+	// ft_printf("width: %d\n", map_tst->width);
 	strs_print(map_tst->grid);
 	
 	// CLEANUP //

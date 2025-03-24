@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:08:49 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/23 16:40:34 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/03/24 11:51:37 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	free_strs(char **strs)
 		free(strs[i]);
 		i++;
 	}
+	free(strs[i]);
 	free(strs);
 	strs = NULL;
 }

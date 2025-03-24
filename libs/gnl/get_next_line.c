@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 16:35:13 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/23 17:10:51 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/03/24 15:44:40 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,6 @@ char	*divide_line(char **temp)
 	n = 0;
 	while ((*temp)[n] != '\n' && (*temp)[n] != '\0')
 		n++;
-	/////////////////////////////////////////////////////
-	
 	if ((*temp)[n] == '\n')
 		res = ft_substr(*temp, 0, n+1);
 	else
@@ -63,7 +61,6 @@ char	*divide_line(char **temp)
 		cache = ft_strdup2(*temp + (n + 1));
 	else
 		cache = ft_strdup2("");
-	////////////////////////////////////////////////////////
 	if (!cache)
 		return (free(res), free(*temp), *temp = NULL, NULL);
 	free(*temp);
@@ -76,6 +73,8 @@ char	*get_next_line(int fd)
 	static char	*temp;
 	char		*res;
 
+	if (fd == -1)
+		free(temp);
 	res = NULL;
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
