@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 12:41:23 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/22 15:58:50 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/03/25 15:21:28 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 # define GRAPHICS_H
 
 # include "so_long.h"
-#include "map.h"
+# include "map.h"
+# include "macros.h"
 
 // IMAGE STRUCTURE ///////////////////////////////////////
 typedef struct s_img
@@ -58,9 +59,9 @@ int		init_sprites(void *mlx, t_img *images);
 # define SPRITE_SIZE 80
 
 // ERRORS /////////////////////////////////////////////////////
-# define ER_OK 0
-# define ER_MLX_INIT -1
-# define ERR_MLX_NWIN -2
-# define ERR_FILE_TO_IMG -3
+// # define ER_OK 0
+// # define ER_MLX_INIT -1
+// # define ERR_MLX_NWIN -2
+// # define ERR_FILE_TO_IMG -3
 
 #endif

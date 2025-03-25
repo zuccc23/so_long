@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 12:37:26 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/24 15:02:24 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/03/25 18:16:26 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # include "../libs/minilibx-linux/mlx.h"
 # include "../libs/libft/libft.h"
 # include "../libs/printf/ft_printf.h"
+# include "macros.h"
 
 // MAP STRUCTURE //////////////////////////////////////////////////
 typedef struct s_map
@@ -37,13 +38,35 @@ typedef struct s_map
 	int		collectible_count;
 } t_map;
 
+// FLOOD FILL STRUCTURE /////////////////////////////////////////
+typedef struct s_point
+{
+	int	x;
+	int	y;
+}		t_point;
+
 // PARSER /////////////////////////////////////////////////////////
 int		init_map(t_map **map, char *mapfile, int fd);
 int		count_height(t_map **map, char *mapfile, int *fd);
+int		count_width(char **strs, t_map **map);
 int		fill_map(t_map **map, char *mapfile, int *fd);
 void	strs_print(char **strs); //delete later
 void 	remove_nline(char *str);
-int		count_width(char **strs, t_map **map);
-char	*ft_strnoline(const char *s1);
 
+// VALIDATOR //////////////////////////////////////////////////////
+int		valid_characters(t_map *map);
+int		ok_char(char c);
+int		valid_line(char *str, int i, int height, int width);
+int		valid_map(t_map *map);
+int		valid_walls(t_map *map);
+
+// VALID SPRITES //////////////////////////////////////////////////
+int		valid_sprites(t_map *map);
+int		valid_exit_player(t_map *map, char c);
+int		valid_collect(t_map *map, char c);
+
+// PATH FINDER ////////////////////////////////////////////////////
+void	flood_fill(char **tab, t_point size, t_point begin);
+int		path_finder(t_map *map);
+int	to_fillc(char c, t_point size, t_point begin);
 #endif

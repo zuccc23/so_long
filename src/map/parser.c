@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 12:32:01 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/24 15:53:17 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/03/25 15:21:41 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,33 +15,26 @@
 int	init_map(t_map **map, char *mapfile, int fd)
 {
 	fd = -1;
-	
 	*map = malloc(sizeof(t_map));
 	if (!*map)
-		return (1);
-	
+		return (ER_INIT_MAP);
 	if (count_height(&(*map), mapfile, &fd) != 0)
-		return (1);
-	// (*map)->height = 5;
-	
+		return (ER_MAP_SIZE);
 	(*map)->grid = malloc(((*map)->height + 1) * sizeof(char *));
 	if (!(*map)->grid)
-		return (1);
-		
+		return (ER_INIT_MAP);
 	if (fill_map(&(*map), mapfile, &fd) != 0)
-		return (1);
-	
+		return (ER_INIT_MAP);
 	if (count_width((*map)->grid, &(*map)) != 0)
-		return (1);
-	
-	return (0);
+		return (ER_MAP_SIZE);
+	return (ER_OK);
 }
 
 int	count_height(t_map **map, char *mapfile, int *fd)
 {
 	int		count;
 	char	buffer[10];
-	char		*temp;
+	char	*temp;
 
 	count = 0;
 	*fd = open(mapfile, O_RDONLY);
@@ -143,22 +136,4 @@ void	strs_print(char **strs) //delete later
 	}
 	// if (strs[i] == NULL)
 	// 	write (1, "null", 4);
-}
-
-char	*ft_strnoline(const char *s1)
-{
-	size_t	i;
-	char	*result;
-
-	i = 0;
-	result = malloc(sizeof(char) * ft_strlen(s1) + 1);
-	if (result == NULL)
-		return (NULL);
-	while (s1[i])
-	{
-		result[i] = s1[i];
-		i++;
-	}
-	result[i] = '\0';
-	return (result);
 }

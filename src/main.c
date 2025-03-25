@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 17:27:43 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/24 15:52:48 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/03/25 17:49:02 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,31 +17,39 @@
 int	main(int argc, char **argv)
 {	
 	// PARSING //////////////////////////////////////////////
-	t_map	*map_tst;
+	t_map	*map;
 	char	*mapfile;
+	int		err_code;
 	int fd = -1;
 	
-	ft_printf("--REAL MAP--\n");
 	// if (argc != 2)
 	// 	return (0);
-
-	// 11111
-	// 1P001
-	// 1C001
-	// 10CE1
-	// 11111
-
-	if (init_map(&map_tst, argv[1], fd) != 0)
-		return (1);
-
-	// ft_printf("height: %d\n", map_tst->height);
-	// ft_printf("width: %d\n", map_tst->width);
-	strs_print(map_tst->grid);
+	
+	// INIT MAP //
+	err_code = init_map(&map, argv[1], fd);
+	if (err_code != ER_OK)
+		return_error(err_code, map, fd);
 	
 	// CLEANUP //
-	clean_map(&map_tst, fd);
-	return (1);
+	// clean_map(&map, fd);
+	// return (1);
+
+	// VALIDATOR //
+	err_code = valid_map(map);
+	if (err_code != ER_OK)
+		return_error(err_code, map, fd);
+
+	// PATH FINDER //
+	t_point	size = {map->width, map->height};
+	t_point begin = {2, 4};
 	
+	ft_printf("--MAP--\n");
+	strs_print(map->grid);
+	flood_fill(map->grid, size, begin);
+
+	ft_printf("--FLOODED MAP--\n");
+	strs_print(map->grid);
+	return (1);
 	// GRAPHIC SETUP //////////////////////////////////////////
 	
 	// MAP //
@@ -60,7 +68,7 @@ int	main(int argc, char **argv)
 	// // WINDOW /////////////////////////////////////////////////
 	void	*mlx = NULL;
 	void	*window = NULL;
-	if (init_mlx(&mlx, &window, map_tst->height, map_tst->width) != ER_OK)
+	if (init_mlx(&mlx, &window, map->height, map->width) != ER_OK)
 		return (ft_printf("error"));
 	
 	// // BASIC COLOR IMAGE //
@@ -116,7 +124,7 @@ int	main(int argc, char **argv)
 	
 	if (init_sprites(mlx, &img) != ER_OK)
 		return (ft_printf("error"));
-	render_map(img, mlx, window, *map_tst);
+	render_map(img, mlx, window, *map);
 
 	// // EVENTS
 	t_data data;
