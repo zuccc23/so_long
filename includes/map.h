@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 12:37:26 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/25 18:16:26 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/03/27 15:20:50 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,7 @@ int		valid_collect(t_map *map, char c);
 // PATH FINDER ////////////////////////////////////////////////////
 void	flood_fill(char **tab, t_point size, t_point begin);
 int		path_finder(t_map *map);
-int	to_fillc(char c, t_point size, t_point begin);
+int		char_to_fill(char c, t_point size, t_point begin);
+void	get_start(t_point *size, t_point *begin, t_map *map);
+
 #endif

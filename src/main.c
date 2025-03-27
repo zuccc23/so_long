@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 17:27:43 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/25 17:49:02 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/03/27 15:18:57 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,21 @@ int	main(int argc, char **argv)
 		return_error(err_code, map, fd);
 
 	// PATH FINDER //
-	t_point	size = {map->width, map->height};
-	t_point begin = {2, 4};
+	// t_point	size = {map->width, map->height};
+	// t_point begin = {2, 4};
+	t_point	size;
+	t_point begin;
 	
-	ft_printf("--MAP--\n");
-	strs_print(map->grid);
-	flood_fill(map->grid, size, begin);
+	// get_start(&size, &begin, *map);
+	// // // ft_printf("x : %d, y : %d\n", begin.x, begin.y);	
+	// ft_printf("--MAP--\n");
+	// strs_print(map->grid);
+	// flood_fill(map->grid, size, begin);
 
-	ft_printf("--FLOODED MAP--\n");
-	strs_print(map->grid);
+	// ft_printf("--FLOODED MAP--\n");
+	// strs_print(map->grid);
+
+	path_finder(map);
 	return (1);
 	// GRAPHIC SETUP //////////////////////////////////////////
 	
