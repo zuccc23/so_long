@@ -6,12 +6,13 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 12:48:46 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/22 18:24:16 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/03/28 17:15:03 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/graphics.h"
 #include "../../includes/map.h"
+#include "../../includes/so_long.h"
 
 int	init_mlx(void **mlx, void **window, int height, int width)
 {
@@ -42,6 +43,7 @@ void	*create_window(void *mlx, void *window, int width, int height)
 
 int	close_window(t_data *data)
 {
+	clean_map(&(data->map));
 	//cleanup needed before closing window 
 	mlx_destroy_window(data->mlx, data->window);
 	//maybe err code if fail

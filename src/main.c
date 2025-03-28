@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 17:27:43 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/27 15:18:57 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/03/28 17:28:40 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,16 @@ int	main(int argc, char **argv)
 {	
 	// PARSING //////////////////////////////////////////////
 	t_map	*map;
-	char	*mapfile;
+	// char	*mapfile;
 	int		err_code;
-	int fd = -1;
 	
-	// if (argc != 2)
-	// 	return (0);
+	if (argc != 2)
+		return (ft_printf("Error\n->No map provided"));
 	
 	// INIT MAP //
-	err_code = init_map(&map, argv[1], fd);
+	err_code = init_map(&map, argv[1]);
 	if (err_code != ER_OK)
-		return_error(err_code, map, fd);
+		return_error(err_code, map);
 	
 	// CLEANUP //
 	// clean_map(&map, fd);
@@ -37,7 +36,7 @@ int	main(int argc, char **argv)
 	// VALIDATOR //
 	err_code = valid_map(map);
 	if (err_code != ER_OK)
-		return_error(err_code, map, fd);
+		return_error(err_code, map);
 
 	// PATH FINDER //
 	// t_point	size = {map->width, map->height};
@@ -45,17 +44,22 @@ int	main(int argc, char **argv)
 	t_point	size;
 	t_point begin;
 	
-	// get_start(&size, &begin, *map);
+	// get_start(&size, &begin, map);
+	// char	**temp = copy_tab(map);
 	// // // ft_printf("x : %d, y : %d\n", begin.x, begin.y);	
 	// ft_printf("--MAP--\n");
 	// strs_print(map->grid);
-	// flood_fill(map->grid, size, begin);
+	// flood_fill(temp, size, begin);
 
 	// ft_printf("--FLOODED MAP--\n");
 	// strs_print(map->grid);
 
-	path_finder(map);
-	return (1);
+	err_code = path_finder(map);
+	if (err_code != ER_OK)
+		return_error(err_code, map);
+	// strs_print(map->grid);
+	// ft_printf("%d\n", correct_path(map->grid));
+	// return (1);
 	// GRAPHIC SETUP //////////////////////////////////////////
 	
 	// MAP //
@@ -132,11 +136,13 @@ int	main(int argc, char **argv)
 		return (ft_printf("error"));
 	render_map(img, mlx, window, *map);
 
-	// // EVENTS
+	// // // EVENTS
 	t_data data;
+	data.map = map;
 	data.window = window;
 	data.mlx = mlx;
 	
+	// strs_print(data.map->grid);
 	event_handler(&data);
 	
 	// // LOOP
@@ -144,7 +150,7 @@ int	main(int argc, char **argv)
 }
 
 /*STUFF TO FREE :
--map
+-map DONE
 -t_img img
 -window (close)
 -mlx?

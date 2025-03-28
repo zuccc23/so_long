@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:17:54 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/25 16:57:48 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/03/28 15:07:22 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # define ERR_FILE_TO_IMG -3
 
 // MAP ERRORS ///////////////////////////////////////////////////
-# define ER_INIT_MAP -10
+# define ER_MALLOC -10
 # define ER_PLAYER -11
 # define ER_WALLS -12
 # define ER_COLLECT -13

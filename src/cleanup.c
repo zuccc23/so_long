@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:08:49 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/25 16:22:08 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/03/28 16:49:14 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,18 @@
 #include "../includes/map.h"
 #include "../includes/graphics.h"
 
-void	clean_map(t_map **map, int fd)
+void	clean_map(t_map **map)
 {
-	if (*map)
+	ft_printf("cleaning...\n");
+	if (map && *map)
 	{
-		if ((*map)->grid)
+		if ((*map)->grid != NULL)
 			free_strs((*map)->grid);
+		if ((*map)->fd != -1)
+			close((*map)->fd);
 		free(*map);
+		*map = NULL;
 	}
-	if (fd != -1)
-		close(fd);
 }
 
 void	free_strs(char **strs)
@@ -41,9 +43,9 @@ void	free_strs(char **strs)
 	strs = NULL;
 }
 
-void	return_error(int err_code, t_map *map, int fd)
+void	return_error(int err_code, t_map *map)
 {
-	clean_map(&map, fd);
+	clean_map(&map);
 	display_error(err_code);
 	exit (1);
 }
@@ -52,8 +54,8 @@ void	display_error(int err_code)
 {
 	if (err_code == ER_CHAR)
 		return (ft_putstr_fd("Error\n->Wrong map component\n", 2));
-	else if (err_code == ER_INIT_MAP)
-		return (ft_putstr_fd("Error\n->Map couldn't be allocated\n", 2));
+	else if (err_code == ER_MALLOC)
+		return (ft_putstr_fd("Error\n->Memory allocation problem\n", 2));
 	else if (err_code == ER_MAP_SIZE)
 		return (ft_putstr_fd("Error\n->Wrong map\n", 2));
 	else if (err_code == ER_COLLECT)
@@ -64,6 +66,8 @@ void	display_error(int err_code)
 		return (ft_putstr_fd("Error\n->Wrong player's starting position\n", 2));
 	else if (err_code == ER_WALLS)
 		return (ft_putstr_fd("Error\n->Walls not properly placed\n", 2));
+	else if (err_code == ER_PATH)
+		return (ft_putstr_fd("Error\n->Unreachable exit or collectibles\n", 2));
 	else
 		return ;
 }

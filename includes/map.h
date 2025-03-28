@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 12:37:26 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/27 15:20:50 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/03/28 16:23:20 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,7 @@ typedef struct s_map
 	char	**grid;
 	int		height;
 	int		width;
-	int		player_count;
-	int		exit_count;
-	int		collectible_count;
+	int		fd;
 } t_map;
 
 // FLOOD FILL STRUCTURE /////////////////////////////////////////
@@ -46,10 +44,10 @@ typedef struct s_point
 }		t_point;
 
 // PARSER /////////////////////////////////////////////////////////
-int		init_map(t_map **map, char *mapfile, int fd);
-int		count_height(t_map **map, char *mapfile, int *fd);
+int		init_map(t_map **map, char *mapfile);
+int		count_height(t_map **map, char *mapfile);
 int		count_width(char **strs, t_map **map);
-int		fill_map(t_map **map, char *mapfile, int *fd);
+int		fill_map(t_map **map, char *mapfile);
 void	strs_print(char **strs); //delete later
 void 	remove_nline(char *str);
 
@@ -70,5 +68,7 @@ void	flood_fill(char **tab, t_point size, t_point begin);
 int		path_finder(t_map *map);
 int		char_to_fill(char c, t_point size, t_point begin);
 void	get_start(t_point *size, t_point *begin, t_map *map);
+char	**copy_tab(t_map *map);
+int	correct_path(char **tab);
 
 #endif

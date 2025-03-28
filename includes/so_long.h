@@ -6,19 +6,12 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 17:43:48 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/25 16:57:38 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/03/28 17:14:28 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
-
-// DATA STRUCTURE ///////////////////////////////////////
-typedef struct s_data
-{
-	void	*mlx;
-	void	*window;
-}	t_data;
 
 // LIBS /////////////////////////////////////////////////
 # include <stdio.h>
@@ -36,14 +29,25 @@ typedef struct s_data
 # include "map.h"
 # include "macros.h"
 
+// DATA STRUCTURE ///////////////////////////////////////
+typedef struct s_data
+{
+	void	*mlx;
+	void	*window;
+	t_map	*map;
+}	t_data;
+
+
 // MOVEMENT ////////////////////////////////////////////////
-int		key_handler(int keycode, t_data *vars);
+int		key_handler(int keycode, t_data *vars, t_map *map);
 void	event_handler(t_data *data);
 
 // CLEANUP //////////////////////////////////////////////////
-void	clean_map(t_map **map, int fd);
+void	clean_map(t_map **map);
 void	free_strs(char **strs);
-void	return_error(int err_code, t_map *map, int fd);
+void	return_error(int err_code, t_map *map);
 void	display_error(int err_code);
+
+
 
 #endif

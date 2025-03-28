@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 15:43:09 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/22 18:24:10 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/03/28 17:11:30 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../../includes/map.h"
 #include "../../includes/graphics.h"
 
-int	key_handler(int keycode, t_data *vars)
+int	key_handler(int keycode, t_data *vars, t_map *map)
 {
 	//add movement count
 	if (keycode == XK_w)
