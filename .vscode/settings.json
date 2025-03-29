@@ -1,5 +1,7 @@
 {
 	"files.associations": {
-		"graphics.h": "c"
+		"graphics.h": "c",
+		"so_long.h": "c",
+		"macros.h": "c"
 	}
 }

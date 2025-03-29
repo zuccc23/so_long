@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 14:38:46 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/25 16:23:59 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/03/29 14:34:07 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,6 @@ int	valid_collect(t_map *map, char c)
 	}
 	if (count < 1)
 		return (1);
+	map->collect_count = count;
 	return (0);
 }

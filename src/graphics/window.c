@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 12:48:46 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/28 17:15:03 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/03/29 13:17:29 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,25 @@ void	*create_window(void *mlx, void *window, int width, int height)
 
 int	close_window(t_data *data)
 {
+	// FREE MAP
 	clean_map(&(data->map));
-	//cleanup needed before closing window 
+	
+	// FREE IMAGES
+	mlx_destroy_image(data->mlx, data->img->collect);
+	mlx_destroy_image(data->mlx, data->img->wall);
+	mlx_destroy_image(data->mlx, data->img->exit);
+	mlx_destroy_image(data->mlx, data->img->player);
+	mlx_destroy_image(data->mlx, data->img->tile);
+	
+	// DESTROY WINDOW
 	mlx_destroy_window(data->mlx, data->window);
-	//maybe err code if fail
+
+	// DESTROY DISPLAY
+	mlx_destroy_display(data->mlx);
+	
+	// FREE MLX POINTER
+	free(data->mlx);
+	
 	exit(0);
 	return (0);
 }

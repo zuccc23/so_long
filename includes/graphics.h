@@ -6,16 +6,19 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 12:41:23 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/28 17:11:08 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/03/29 11:40:19 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GRAPHICS_H
 # define GRAPHICS_H
 
-# include "so_long.h"
 # include "map.h"
 # include "macros.h"
+// # include "so_long.h"
+
+// Forward declaration (defined in so_long.h)
+typedef struct s_data t_data;
 
 // IMAGE STRUCTURE ///////////////////////////////////////
 typedef struct s_img
@@ -26,15 +29,6 @@ typedef struct s_img
 	void	*exit;
 	void	*tile;
 }	t_img;
-
-// typedef struct s_data
-// {
-// 	void	*img;
-// 	char	*addr;
-// 	int		bits_per_pixel;
-// 	int		line_length;
-// 	int		endian;
-// }	t_data;
 
 // WINDOW //////////////////////////////////////////////////
 int		init_mlx(void **mlx, void **window, int height, int width);

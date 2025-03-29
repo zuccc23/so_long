@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 17:27:43 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/28 17:28:40 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/03/29 15:18:44 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,9 @@ int	main(int argc, char **argv)
 	void	*mlx = NULL;
 	void	*window = NULL;
 	if (init_mlx(&mlx, &window, map->height, map->width) != ER_OK)
-		return (ft_printf("error"));
+		return_error(err_code, map);
+	
+	
 	
 	// // BASIC COLOR IMAGE //
 	// t_data	img;
@@ -141,10 +143,11 @@ int	main(int argc, char **argv)
 	data.map = map;
 	data.window = window;
 	data.mlx = mlx;
+	data.img = &img;
 	
 	// strs_print(data.map->grid);
 	event_handler(&data);
-	
+
 	// // LOOP
 	mlx_loop(mlx);
 }

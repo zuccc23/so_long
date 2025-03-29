@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 16:25:03 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/28 15:38:11 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/03/29 14:57:39 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	fill(char **tab, t_point size, t_point begin, char to_fill)
 {
 	if (char_to_fill(tab[begin.y][begin.x], size, begin) != 0)
 		return;
+	// if (tab[begin.y][begin.x] == 'E')
+	// 	return ;
 	// ft_printf("test: %c\n", tab[begin.y][begin.x]);
 	tab[begin.y][begin.x] = 'F';
 	fill(tab, size, (t_point) {.x= begin.x + 1, .y= begin.y}, to_fill);

@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 12:37:26 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/28 16:23:20 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/03/29 14:11:02 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_map
 	int		height;
 	int		width;
 	int		fd;
+	int		collect_count;
 } t_map;
 
 // FLOOD FILL STRUCTURE /////////////////////////////////////////
