@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 16:35:13 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/24 15:44:40 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/03/31 12:21:16 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ char	*divide_line(char **temp)
 	while ((*temp)[n] != '\n' && (*temp)[n] != '\0')
 		n++;
 	if ((*temp)[n] == '\n')
-		res = ft_substr(*temp, 0, n+1);
+		res = ft_substr(*temp, 0, n + 1);
 	else
 		res = ft_substr(*temp, 0, n);
 	if (!res)
@@ -86,62 +86,3 @@ char	*get_next_line(int fd)
 	res = divide_line(&temp);
 	return (res);
 }
-
-// int	main(int argc, char *argv[])
-// {
-// 	// char s[] = "hello\nwelcome";
-// 	int fd = open (argv[1], O_RDONLY);
-// 	argc = 0;
-// 	char *str;
-// 		while ((str = get_next_line(fd)) != NULL)
-// 		{
-//     		printf("%s", str);
-//     		free(str); // Free after printing
-// 		}
-
-// 	// char *str = get_next_line(fd);
-// 	// printf("%s", str);
-// 	// str = get_next_line(fd);
-// 	// printf("%s", str);
-// 	// str = get_next_line(fd);
-// 	// printf("%s", str);
-// 	// str = get_next_line(fd);
-// 	// printf("%s", str);
-// 	// str = get_next_line(fd);
-// 	// printf("%s", str);
-// 	// str = get_next_line(fd);
-// 	// printf("%s", str);
-// 	close(fd);
-
-// 	// printf("%s\n", ft_strchr(s, 'w'));
-// 	// printf("%s\n", get_before_nline(s));
-// 	// printf("%s\n", get_after_nline(s));
-// }
-
-// char	*divide_line(char **temp)
-// {
-// 	char	*res;
-// 	char	*cache;
-// 	int		n;
-
-// 	if (!*temp || !**temp)
-// 		return (NULL);
-// 	n = 0;
-// 	while ((*temp)[n] != '\n' && (*temp)[n] != '\0')
-// 		n++;
-// 	/////////////////////////////////////////////////////
-	
-// 	if ((*temp)[n] == '\n')
-// 		n++;
-// 	res = ft_substr(*temp, 0, n);
-// 	if (!res)
-// 		return (free(*temp), *temp = NULL, NULL);
-// 	cache = ft_strdup2(*temp + n);
-// 	if (!cache)
-// 		return (free(res), free(*temp), *temp = NULL, NULL);
-	
-// 	////////////////////////////////////////////////////////
-// 	free(*temp);
-// 	*temp = cache;
-// 	return (res);
-// }

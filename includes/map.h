@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 12:37:26 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/29 14:11:02 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/03/31 12:19:27 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct s_map
 	int		width;
 	int		fd;
 	int		collect_count;
-} t_map;
+}	t_map;
 
 // FLOOD FILL STRUCTURE /////////////////////////////////////////
 typedef struct s_point
@@ -50,7 +50,7 @@ int		count_height(t_map **map, char *mapfile);
 int		count_width(char **strs, t_map **map);
 int		fill_map(t_map **map, char *mapfile);
 void	strs_print(char **strs); //delete later
-void 	remove_nline(char *str);
+void	remove_nline(char *str);
 
 // VALIDATOR //////////////////////////////////////////////////////
 int		valid_characters(t_map *map);
@@ -65,11 +65,18 @@ int		valid_exit_player(t_map *map, char c);
 int		valid_collect(t_map *map, char c);
 
 // PATH FINDER ////////////////////////////////////////////////////
-void	flood_fill(char **tab, t_point size, t_point begin);
 int		path_finder(t_map *map);
-int		char_to_fill(char c, t_point size, t_point begin);
 void	get_start(t_point *size, t_point *begin, t_map *map);
 char	**copy_tab(t_map *map);
-int	correct_path(char **tab);
+int		correct_path(char **tab);
+int		correct_path_exit(char **tab);
+
+// FLOOD FILL ////////////////////////////////////////////////////
+void	flood_fill(char **tab, t_point size, t_point begin);
+void	fill(char **tab, t_point size, t_point begin);
+int		char_to_fill(char c, t_point size, t_point begin);
+int		char_to_fill_exit(char c, t_point size, t_point begin);
+void	fill_exit(char **tab, t_point size, t_point begin);
+void	flood_fill_exit(char **tab, t_point size, t_point begin);
 
 #endif

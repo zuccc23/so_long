@@ -6,13 +6,27 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 17:27:43 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/29 15:18:44 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/03/31 12:57:38 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 #include "../includes/map.h"
 #include "../includes/graphics.h"
+
+int	check_ber(char *str)
+{
+	char	*ber;
+	
+	ber = ft_strchr(str, '.');
+	if (!ber)
+		return (1);
+	if (ft_strlen(ber) != 4)
+		return (1);
+	if (ft_strncmp(ber, ".ber", 4) != 0)
+		return (1);
+	return (0);
+}
 
 int	main(int argc, char **argv)
 {	
@@ -21,9 +35,9 @@ int	main(int argc, char **argv)
 	// char	*mapfile;
 	int		err_code;
 	
-	if (argc != 2)
-		return (ft_printf("Error\n->No map provided"));
-	
+	if (argc != 2 || check_ber(argv[1]) == 1)
+		return (ft_printf("Error\n->No map provided, or wrong extension\n"));
+	// return (0);
 	// INIT MAP //
 	err_code = init_map(&map, argv[1]);
 	if (err_code != ER_OK)
@@ -35,9 +49,11 @@ int	main(int argc, char **argv)
 
 	// VALIDATOR //
 	err_code = valid_map(map);
+	// strs_print(map->grid);
 	if (err_code != ER_OK)
 		return_error(err_code, map);
 
+	// return (0);
 	// PATH FINDER //
 	// t_point	size = {map->width, map->height};
 	// t_point begin = {2, 4};

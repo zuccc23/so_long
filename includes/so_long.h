@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 17:43:48 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/29 14:40:12 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/03/31 12:19:58 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 // # include "graphics.h"
 
 // Forward declaration of t_img (defined in graphics.h)
-typedef struct s_img t_img;
+typedef struct s_img	t_img;
 
 // DATA STRUCTURE ///////////////////////////////////////
 typedef struct s_data
@@ -41,7 +41,6 @@ typedef struct s_data
 	t_img	*img;
 	t_map	*map;
 }	t_data;
-
 
 // MOVEMENT ////////////////////////////////////////////////
 int		key_handler(int keycode, t_data *vars, t_map *map);
@@ -56,6 +55,5 @@ void	clean_map(t_map **map);
 void	free_strs(char **strs);
 void	return_error(int err_code, t_map *map);
 void	display_error(int err_code);
-
 
 #endif

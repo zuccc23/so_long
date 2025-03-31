@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 12:32:01 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/28 16:36:15 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/03/31 11:53:01 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,3 +138,4 @@ void	strs_print(char **strs) //delete later
 	// if (strs[i] == NULL)
 	// 	write (1, "null", 4);
 }
+

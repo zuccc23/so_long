@@ -6,9 +6,9 @@ MLX_FLAGS = -L/$(MINILIBX_DIR)/lmlx -lXext -lX11
 
 #SOURCE FILES
 MAIN_SRC = src/main.c src/cleanup.c
-MAP_SRC = src/map/parser.c src/map/validator.c src/map/valid_sprites.c src/map/path_finder.c
+MAP_SRC = src/map/parser.c src/map/validator.c src/map/valid_sprites.c src/map/path_finder.c src/map/flood_fill.c src/map/flood_fill_exit.c
 GRAPH_SRC = src/graphics/window.c src/graphics/render.c src/graphics/textures.c
-GAME_SRC = src/game/movement.c
+GAME_SRC = src/game/movement.c src/game/events.c
 
 #DIRECTORIES
 OBJ_DIR = obj
