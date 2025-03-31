@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 12:37:26 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/31 12:19:27 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/03/31 16:13:30 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ int		init_map(t_map **map, char *mapfile);
 int		count_height(t_map **map, char *mapfile);
 int		count_width(char **strs, t_map **map);
 int		fill_map(t_map **map, char *mapfile);
-void	strs_print(char **strs); //delete later
 void	remove_nline(char *str);
 
 // VALIDATOR //////////////////////////////////////////////////////

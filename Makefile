@@ -5,10 +5,10 @@ CFLAGS = -Wall -Wextra -Werror
 MLX_FLAGS = -L/$(MINILIBX_DIR)/lmlx -lXext -lX11
 
 #SOURCE FILES
-MAIN_SRC = src/main.c src/cleanup.c
+MAIN_SRC = src/main.c src/cleanup.c src/init.c
 MAP_SRC = src/map/parser.c src/map/validator.c src/map/valid_sprites.c src/map/path_finder.c src/map/flood_fill.c src/map/flood_fill_exit.c
 GRAPH_SRC = src/graphics/window.c src/graphics/render.c src/graphics/textures.c
-GAME_SRC = src/game/movement.c src/game/events.c
+GAME_SRC = src/game/movements.c src/game/events.c
 
 #DIRECTORIES
 OBJ_DIR = obj
@@ -37,7 +37,7 @@ all: $(NAME)
 
 #LINKING EXECUTABLE !!!FLAGS
 $(NAME): $(OBJ_DIR) $(OBJ_DIR)/map $(OBJ_DIR)/game $(OBJ_DIR)/graphics $(OBJ) $(MINILIBIX_OBJ) $(GNL_OBJ) $(LIBFT_OBJ) $(PRINTF_OBJ)
-	${CC}  $(OBJ) $(GNL_OBJ) $(LIBFT_OBJ) $(PRINTF_OBJ) $(MINILIBIX_OBJ) $(MLX_FLAGS) -o $(NAME)
+	${CC} ${CFLAGS} $(OBJ) $(GNL_OBJ) $(LIBFT_OBJ) $(PRINTF_OBJ) $(MINILIBIX_OBJ) $(MLX_FLAGS) -o $(NAME)
 
 #BUILD LIBRARIES
 $(MINILIBIX_OBJ):
@@ -64,16 +64,16 @@ $(OBJ_DIR)/game:
 
 #COMPILING .c FILES INTO .o FILES (INSIDE OBJ DIR) !!!FLAGS
 $(OBJ_DIR)/%.o: src/%.c | $(OBJ_DIR)
-	${CC}  -c $< -o $@
+	${CC} ${CFLAGS} -c $< -o $@
 
 $(OBJ_DIR)/map/%.o: src/map/%.c | $(OBJ_DIR)/map
-	${CC}  -c $< -o $@
+	${CC} ${CFLAGS} -c $< -o $@
 
 $(OBJ_DIR)/graphics/%.o: src/graphics/%.c | $(OBJ_DIR)/graphics
-	${CC}  -c $< -o $@
+	${CC} ${CFLAGS} -c $< -o $@
 
 $(OBJ_DIR)/game/%.o: src/game/%.c | $(OBJ_DIR)/game
-	${CC}  -c $< -o $@
+	${CC} ${CFLAGS} -c $< -o $@
 
 #BASIC RULES
 clean:

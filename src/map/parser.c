@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 12:32:01 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/31 11:53:01 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/03/31 16:15:27 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ int	init_map(t_map **map, char *mapfile)
 int	count_height(t_map **map, char *mapfile)
 {
 	int		count;
-	char	buffer[10];
 	char	*temp;
 
 	count = 0;
@@ -116,26 +115,3 @@ void	remove_nline(char *str)
 		i++;
 	}
 }
-
-void	strs_print(char **strs) //delete later
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (strs[i] != NULL)
-	{
-		while (strs[i][j])
-		{
-			write (1, &strs[i][j], 1);
-			j++;
-		}
-		write (1, "\n", 1);
-		i++;
-		j = 0;
-	}
-	// if (strs[i] == NULL)
-	// 	write (1, "null", 4);
-}
-

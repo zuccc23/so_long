@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:08:49 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/28 16:49:14 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/03/31 16:11:46 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 
 void	clean_map(t_map **map)
 {
-	ft_printf("cleaning...\n");
 	if (map && *map)
 	{
 		if ((*map)->grid != NULL)
@@ -53,7 +52,7 @@ void	return_error(int err_code, t_map *map)
 void	display_error(int err_code)
 {
 	if (err_code == ER_CHAR)
-		return (ft_putstr_fd("Error\n->Wrong map component\n", 2));
+		return (ft_putstr_fd("Error\n->Wrong map component(s)\n", 2));
 	else if (err_code == ER_MALLOC)
 		return (ft_putstr_fd("Error\n->Memory allocation problem\n", 2));
 	else if (err_code == ER_MAP_SIZE)
@@ -63,7 +62,7 @@ void	display_error(int err_code)
 	else if (err_code == ER_EXIT)
 		return (ft_putstr_fd("Error\n->Wrong exit amount\n", 2));
 	else if (err_code == ER_PLAYER)
-		return (ft_putstr_fd("Error\n->Wrong player's starting position\n", 2));
+		return (ft_putstr_fd("Error\n->Wrong player amount\n", 2));
 	else if (err_code == ER_WALLS)
 		return (ft_putstr_fd("Error\n->Walls not properly placed\n", 2));
 	else if (err_code == ER_PATH)

@@ -6,7 +6,7 @@
 /*   By: dahmane <dahmane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:27:25 by dahmane           #+#    #+#             */
-/*   Updated: 2025/03/31 12:08:10 by dahmane          ###   ########.fr       */
+/*   Updated: 2025/03/31 14:34:00 by dahmane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int	init_sprites(void *mlx, t_img *images)
 	int	width;
 	int	height;
 
+	width = 0;
+	height = 0;
 	(*images).player = create_img(mlx, "assets/sprite/bi.xpm", width, height);
 	if (!(*images).player)
 		return (ERR_FILE_TO_IMG);
